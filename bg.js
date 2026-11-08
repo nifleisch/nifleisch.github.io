@@ -12,8 +12,12 @@
   const low = document.createElement('canvas'), lg = low.getContext('2d');
   let W = 0, H = 0, dpr = 1, mx = -1e4, my = -1e4, sx = -1e4, sy = -1e4, glitchAt = -1e4;
   let glowCol = [123, 47, 242], glowFrom = glowCol, glowTo = glowCol, glowT = 1;
-  const fit = () => { dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; c.width = W * dpr; c.height = H * dpr;
-    low.width = Math.ceil(W / 4); low.height = Math.ceil(H / 4); };
+  const NOISE = mode === 'noise';
+  if (NOISE) c.style.imageRendering = 'pixelated';
+  const fit = () => { dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight;
+    low.width = Math.ceil(W / 4); low.height = Math.ceil(H / 4);
+    if (NOISE) { c.width = low.width; c.height = low.height; img = null; } else { c.width = W * dpr; c.height = H * dpr; } };
+  let img = null;
   fit(); addEventListener('resize', fit);
   addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; });
   addEventListener('touchmove', e => { mx = e.touches[0].clientX; my = e.touches[0].clientY; }, { passive: true });
@@ -43,45 +47,50 @@
   const patches = []; let nextPatch = 1200, lastGlitch = -1e4;
   const spawn = (now, x, y, s) => { const w = (8 + Math.random() * 22) * s, h = (3 + Math.random() * 8) * s;
     patches.push({ x: x - w / 2, y: y - h / 2, w, h, t0: now, len: 180 + Math.random() * 280 }); };
+  // precomputed random table + integer hashing: far cheaper than Math.sin per pixel (Safari especially)
+  const TBL = new Float32Array(1 << 16); for (let i = 0; i < TBL.length; i++) TBL[i] = Math.random();
+  const hr = (x, y, s) => TBL[((x * 73856093) ^ (y * 19349663) ^ (s * 83492791)) & 65535];
+  let lastNoise = -1e4;
   function noise(now, gs, fr) {
+    if (now - lastNoise < 33) return;                                     // ~30 fps is plenty for grain
+    lastNoise = now;
     const w = low.width, h = low.height;
     if (!reduce && now > nextPatch) { spawn(now, Math.random() * w, Math.random() * h, 1); nextPatch = now + 1400 + Math.random() * 2600; }
     if (!reduce && glitchAt !== lastGlitch) { lastGlitch = glitchAt;            // style change: a couple of patches near the creature
       const f = fig(); for (let k = 0; k < 2; k++) spawn(now, (f.left + f.width * (0.1 + Math.random() * 0.8)) / 4, (f.top + f.height * (0.2 + Math.random() * 0.8)) / 4, 1.2); }
     for (let k = patches.length - 1; k >= 0; k--) { const p = patches[k], t = (now - p.t0) / p.len;
       if (t >= 1) patches.splice(k, 1); else p.s = 0.5 * Math.sin(Math.PI * t) * AMP; }
-    const img = lg.createImageData(w, h), d = img.data;
-    const seed = reduce ? 1 : Math.floor(now / 70), R = Math.min(260, Math.max(W, H) * 0.22) / 4, cx = sx / 4, cy = sy / 4;
+    if (!img || img.width !== w || img.height !== h) img = g.createImageData(w, h);
+    const d = img.data;
+    const seed = reduce ? 1 : Math.floor(now / 70), R = Math.min(260, Math.max(W, H) * 0.22) / 4, R2 = R * R, cx = sx / 4, cy = sy / 4;
     const drift = reduce ? 0 : now / 1400;
     for (let y = 0; y < h; y++) {
-      // slow rolling bands of denser noise, like a half-denoised image that keeps resampling
       const band = 0.55 + 0.45 * Math.sin(y * 0.09 + drift) * Math.sin(y * 0.023 - drift * 0.7);
-      for (let x = 0; x < w; x++) {
-        const i = (y * w + x) * 4;
-        let G = 0; for (const p of patches) if (x >= p.x && x < p.x + p.w && y >= p.y && y < p.y + p.h) G = Math.max(G, p.s);
-        const blk = G && rnd(Math.floor(x / 4) * 7.7 + Math.floor(y / 3) * 3.3 + seed) < G * 0.5;      // blocky macro-pixels
-        const n = blk ? rnd(Math.floor(x / 4) + Math.floor(y / 3) * 57 + seed) : rnd(x * 0.731 + y * 91.17 + seed * 7.13);
-        const dist = Math.hypot(x - cx, y - cy), clear = Math.max(0, 1 - dist / R);                    // the cursor denoises
-        const a = AMP * (0.06 + 0.05 * band + 0.25 * G) * (1 - clear * clear) * (0.35 + n) * (blk ? 1.4 : 1);
-        const tint = G ? rnd(x * 3.1 + y * 1.7 + seed) : 0.5;
-        const red = tint < .12 * G, cyan = tint > 1 - .12 * G;
-        d[i] = red ? 255 : cyan ? 0 : 90 + 60 * n; d[i + 1] = cyan ? 210 : red ? 20 : 50 + 40 * n; d[i + 2] = cyan ? 255 : red ? 110 : 160 + 80 * n;
-        d[i + 3] = Math.min(255, a * 255);
+      const base = AMP * (0.06 + 0.05 * band), dy2 = (y - cy) * (y - cy);
+      // patches touching this row
+      let rowP = null; for (const p of patches) if (y >= p.y && y < p.y + p.h) (rowP || (rowP = [])).push(p);
+      for (let x = 0, i = y * w * 4; x < w; x++, i += 4) {
+        let G = 0; if (rowP) for (const p of rowP) if (x >= p.x && x < p.x + p.w && p.s > G) G = p.s;
+        const blk = G && hr(x >> 2, ((y / 3) | 0) + 7, seed) < G * 0.5;
+        const n = blk ? hr((x >> 2) + 1, ((y / 3) | 0) * 57, seed + 3) : hr(x, y, seed);
+        const q = (x - cx) * (x - cx) + dy2; let clr = 1;
+        if (q < R2) { const c1 = 1 - Math.sqrt(q) / R; clr = 1 - c1 * c1; }      // the cursor denoises
+        const a = (base + AMP * 0.25 * G) * clr * (0.35 + n) * (blk ? 1.4 : 1);
+        let r = 90 + 60 * n, gg = 50 + 40 * n, b = 160 + 80 * n;
+        if (G) { const tint = hr(x + 11, y + 5, seed); if (tint < .12 * G) { r = 255; gg = 20; b = 110; } else if (tint > 1 - .12 * G) { r = 0; gg = 210; b = 255; } }
+        d[i] = r; d[i + 1] = gg; d[i + 2] = b; d[i + 3] = a > 1 ? 255 : a * 255;
+      }
+      // inside each patch, tear a few rows sideways by shifting the pixel data
+      if (rowP) for (const p of rowP) {
+        if (hr(y, fr, 9) >= 0.5) continue;
+        const off = Math.round((hr(y, fr, 13) - .5) * 20 * p.s); if (!off) continue;
+        const x0 = Math.max(0, Math.floor(p.x)), x1 = Math.min(w, Math.ceil(p.x + p.w)), row = y * w * 4;
+        let src = x0, dst = x0 + off, len = x1 - x0;
+        if (dst < 0) { src -= dst; len += dst; dst = 0; } if (dst + len > w) len = w - dst;
+        if (len > 0) d.copyWithin(row + dst * 4, row + src * 4, row + (src + len) * 4);
       }
     }
-    lg.putImageData(img, 0, 0);
-    g.imageSmoothingEnabled = false;
-    g.drawImage(low, 0, 0, w * 4, h * 4);
-    // inside each patch, tear a few strips sideways
-    for (const p of patches) {
-      const x0 = Math.max(0, Math.floor(p.x)), x1 = Math.min(w, Math.ceil(p.x + p.w)); if (x1 <= x0) continue;
-      for (let y = Math.max(0, Math.floor(p.y)); y < Math.min(h, p.y + p.h);) {
-        const sh = 1 + Math.floor(rnd(y * 1.3 + fr) * 3);
-        if (rnd(y * 7.1 + fr) < 0.5) { const off = Math.round((rnd(y + fr * 2.7) - .5) * 10 * p.s * 2);
-          g.clearRect(x0 * 4, y * 4, (x1 - x0) * 4, sh * 4); g.drawImage(low, x0, y, x1 - x0, sh, (x0 + off) * 4, y * 4, (x1 - x0) * 4, sh * 4); }
-        y += sh;
-      }
-    }
+    g.putImageData(img, 0, 0);
   }
   function glow(now, gs) {
     glowT = Math.min(1, glowT + 0.03);
@@ -96,7 +105,7 @@
   }
   function frame(now) {
     sx += (mx - sx) * 0.12; sy += (my - sy) * 0.12;
-    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    if (!NOISE) { g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H); }
     const gt = (now - glitchAt) / 480, gs = gt >= 0 && gt < 1 ? Math.sin(Math.PI * gt) : 0, fr = Math.floor(now / 42);
     if (mode === 'dots') dots(now, gs, fr); else if (mode === 'noise') noise(now, gs, fr); else glow(now, gs);
     requestAnimationFrame(frame);

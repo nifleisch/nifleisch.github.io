@@ -174,16 +174,18 @@
 
   // ---------- glitch transition between styles: horizontal bands flip to the new style
   // out of order, tear sideways, flicker back, with an RGB split and a few pixelated blocks
-  const bufA = mk(), bufB = mk(), mixC = mk(), redC = mk(), cyanC = mk();
+  const bufA = mk(), bufB = mk(), mixC = mk(), HP = PX / 2;
+  const mkH = () => { const c = document.createElement('canvas'); c.width = c.height = HP; return c; };
+  const redC = mkH(), cyanC = mkH();   // the RGB ghosts are drawn at half size: much cheaper, and invisible in a 0.5 s glitch
   const lowC = document.createElement('canvas'); lowC.width = lowC.height = 64;
   const DUR = 480 * (+new URLSearchParams(location.search).get('slow') || 1);
   let seed = 1;
   const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
   function tint(dst, src, col) {
     const d = dst.getContext('2d');
-    d.globalCompositeOperation = 'copy'; d.drawImage(src, 0, 0);
-    d.globalCompositeOperation = 'multiply'; d.fillStyle = col; d.fillRect(0, 0, PX, PX);
-    d.globalCompositeOperation = 'destination-in'; d.drawImage(src, 0, 0);
+    d.globalCompositeOperation = 'copy'; d.drawImage(src, 0, 0, HP, HP);
+    d.globalCompositeOperation = 'multiply'; d.fillStyle = col; d.fillRect(0, 0, HP, HP);
+    d.globalCompositeOperation = 'destination-in'; d.drawImage(src, 0, 0, HP, HP);
     d.globalCompositeOperation = 'source-over';
   }
   function glitch(t, g, now) {
@@ -210,8 +212,8 @@
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, PX, PX);
     if (d < 1) { ctx.drawImage(mixC, 0, 0); return; }
     tint(redC, mixC, '#ff0000'); tint(cyanC, mixC, '#00ffff');
-    ctx.drawImage(redC, -d, 0);
-    ctx.globalCompositeOperation = 'lighter'; ctx.drawImage(cyanC, d, 0);
+    ctx.drawImage(redC, -d, 0, PX, PX);
+    ctx.globalCompositeOperation = 'lighter'; ctx.drawImage(cyanC, d, 0, PX, PX);
     ctx.globalCompositeOperation = 'source-over';
   }
   let style = M.styles[0].id, trans = null;

@@ -136,7 +136,7 @@ window.Flames = class Flames {
   draw() {
     const gl = this.gl;
     if (!this.cur) return;
-    const w = this.c.clientWidth * devicePixelRatio, h = this.c.clientHeight * devicePixelRatio;
+    const q = Math.min(1.5, devicePixelRatio || 1), w = Math.round(this.c.clientWidth * q), h = Math.round(this.c.clientHeight * q);   // cap the shader's resolution
     if (this.c.width !== w || this.c.height !== h) { this.c.width = w; this.c.height = h; }
     gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     let mixT = 1, B = this.cur;

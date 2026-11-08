@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects · Nils Fleischmann</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237b2ff2'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,7 +37,6 @@
   .num { font: 700 13px/1 "Space Mono", ui-monospace, monospace; color: var(--accent); white-space: nowrap; }
   /* the creature, in a different style for every entry; glitches when you hover the entry */
   .elmo { width: 56px; height: 46px; object-fit: contain; object-position: bottom; display: block; margin-top: 2px; }
-  .item:hover .elmo { animation: glitch .45s steps(2) 1; }
   @keyframes glitch {
     0% { transform: translate(0); filter: drop-shadow(-3px 0 0 rgba(255,0,90,.7)) drop-shadow(3px 0 0 rgba(0,190,255,.7)); clip-path: inset(10% 0 55% 0); }
     25% { transform: translate(-3px, 1px); clip-path: inset(50% 0 10% 0); }
@@ -49,7 +50,7 @@
   tfoot td { border: 0; font-weight: 600; padding-top: 10px; }
   .fine { font-size: 12px; color: var(--quiet); margin-top: 6px; }
   @media (max-width: 520px) { .item { grid-template-columns: 44px 1fr; gap: 10px; } .elmo { width: 44px; height: 36px; } }
-  @media (prefers-reduced-motion: reduce) { .item:hover .elmo { animation: none; } }
+  
 </style>
 </head>
 <body data-bg-amp="0.55">
@@ -107,7 +108,7 @@
   <div class="item"><img class="elmo" src="assets/thumbs/glass.webp" alt="">
     <div><div class="t">Predictive Feature Caching for Training-free Acceleration of Molecular Geometry Generation</div>
       <p>TMLR 2026. Brings diffusion caching to molecule generation.</p>
-      <div class="meta">Sommer, Rachwan, Fleischmann, Günnemann, Charpentier · <a href="https://arxiv.org/abs/2510.04646" target="_blank" rel="noopener">arXiv</a></div></div></div>
+      <div class="meta">Sommer, Fleischmann, Rachwan, Günnemann, Charpentier · <a href="https://openreview.net/forum?id=NaLVutCHCI" target="_blank" rel="noopener">OpenReview</a> · <a href="https://arxiv.org/abs/2510.04646" target="_blank" rel="noopener">arXiv</a></div></div></div>
 
   <h2>Hackathons &amp; Side Projects</h2>
   <div class="item"><img class="elmo" src="assets/thumbs/comic.webp" alt="">
@@ -124,5 +125,37 @@
       <div class="meta"><a href="https://github.com/nifleisch/madden-nfl-prediction" target="_blank" rel="noopener">GitHub</a></div></div></div>
 </main>
 <script src="bg.js"></script>
+<script>
+// each little creature reacts differently every time: glitch slices, a sideways jitter,
+// an RGB split, a pixel crunch, or a quick hop into another art style. Now and then one twitches on its own.
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const STYLES = ["anime.webp", "balloon.webp", "base.webp", "blueprint.webp", "bricks.webp", "candy.webp", "clay.webp", "comic.webp", "crayon.webp", "crochet.webp", "felt.webp", "glass.webp", "glitch.webp", "gold.webp", "graffiti.webp", "ice.webp", "knit.webp", "lowpoly.webp", "marble.webp", "mosaic.webp", "oil.webp", "origami.webp", "paper.webp", "pencil.webp", "pixel.webp", "plush.webp", "popart.webp", "porcelain.webp", "real.webp", "render3d.webp", "sketchnote.webp", "stitch.webp", "vector.webp", "watercolor.webp", "wood.webp", "woodblock.webp", "xray.webp"];
+  const R = (a, b) => a + Math.random() * (b - a), pick = a => a[Math.floor(Math.random() * a.length)];
+  const rgb = (x) => `drop-shadow(${x}px 0 0 rgba(255,0,90,.75)) drop-shadow(${-x}px 0 0 rgba(0,190,255,.75))`;
+  const fx = {
+    slices(el) { const k = []; for (let i = 0; i < 6; i++) { const t = R(0, 70); k.push({ clipPath: `inset(${t}% 0 ${R(0, 100 - t - 8)}% 0)`, transform: `translateX(${R(-6, 6)}px)`, filter: rgb(R(-3, 3)) }); }
+      k.push({ clipPath: 'inset(0)', transform: 'none', filter: 'none' }); return el.animate(k, { duration: R(300, 600), easing: 'steps(1)' }); },
+    jitter(el) { const k = []; for (let i = 0; i < 8; i++) k.push({ transform: `translate(${R(-7, 7)}px, ${R(-1.5, 1.5)}px) skewX(${R(-12, 12)}deg)` });
+      k.push({ transform: 'none' }); return el.animate(k, { duration: R(250, 450), easing: 'steps(1)' }); },
+    split(el) { const x = R(3, 6) * (Math.random() < .5 ? -1 : 1);
+      return el.animate([{ filter: 'none' }, { filter: rgb(x), transform: `translateX(${-x / 2}px)` }, { filter: rgb(-x * .6) }, { filter: 'none', transform: 'none' }], { duration: R(350, 650), easing: 'ease-out' }); },
+    crunch(el) { return el.animate([{ filter: 'none' }, { filter: 'blur(1.5px) contrast(3) saturate(2)', transform: `scale(${R(.9, 1.1)}, ${R(.9, 1.1)})` }, { filter: 'hue-rotate(' + R(40, 300) + 'deg) contrast(2)' }, { filter: 'none', transform: 'none' }], { duration: R(300, 500), easing: 'steps(3)' }); },
+    hop(el) { const own = el.dataset.own || (el.dataset.own = el.getAttribute('src'));
+      const other = 'assets/thumbs/' + pick(STYLES.filter(s => !own.endsWith(s)));
+      const a = fx.slices(el); setTimeout(() => { el.src = other; }, 120);
+      setTimeout(() => { fx.slices(el); setTimeout(() => { el.src = own; }, 120); }, R(700, 1400)); return a; },
+  };
+  const names = Object.keys(fx);
+  const run = (el, only) => { if (el._busy) return; el._busy = 1; const a = fx[only || pick(names)](el); setTimeout(() => { el._busy = 0; }, 450); };
+  STYLES.forEach(s => { const i = new Image(); i.src = 'assets/thumbs/' + s; });   // preload so hops are instant
+  document.querySelectorAll('.item').forEach(it => { const el = it.querySelector('.elmo'); if (el) it.addEventListener('pointerenter', () => run(el)); });
+  const all = [...document.querySelectorAll('.elmo')];
+  const idle = () => { const el = pick(all), r = el.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight) run(el, pick(['jitter', 'split', 'slices', 'hop'])); setTimeout(idle, R(2500, 6000)); };
+  setTimeout(idle, 2500);
+})();
+</script>
+
 </body>
 </html>

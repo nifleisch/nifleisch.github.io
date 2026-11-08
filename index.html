@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nils Fleischmann</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237b2ff2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #f5f2f9; --ink: #1f1830; --quiet: #8a7fa3; --line: rgba(31, 24, 48, .14); color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); overflow: hidden;
+    font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  body { touch-action: none; background: radial-gradient(120% 90% at 50% 38%, #fbf9fd 0%, var(--bg) 55%, #ece6f4 100%); }
+  /* the style zones stay, invisible: wherever the cursor is decides the look */
+  #zones { position: fixed; inset: 0; display: grid; pointer-events: none; visibility: hidden; }
+  main { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px 16px calc(24px + env(safe-area-inset-bottom, 0px)); gap: 6px; }
+  #figure { position: relative; width: min(58vmin, 500px, 92vw); aspect-ratio: 1; margin-top: -4vh; flex: none; }
+  #figure canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .who { text-align: center; margin-top: -1.5vmin; position: relative; z-index: 2; }
+  h1 { font: 700 clamp(26px, 4.6vmin, 42px)/1.1 "Space Mono", ui-monospace, monospace; letter-spacing: -.02em; margin: 0; }
+  .eyebrow { font: 700 11px/1 "Space Mono", ui-monospace, monospace; letter-spacing: .18em; text-transform: uppercase; color: #7b2ff2; margin-bottom: 10px; }
+  .role { color: var(--quiet); font-size: 14px; margin-top: 6px; }
+  .links { display: flex; gap: 22px; justify-content: center; margin-top: 18px; flex-wrap: wrap; }
+  .links a { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: 14px;
+    padding: 4px 0; border-bottom: 1px solid var(--line); transition: border-color .2s, color .2s; }
+  .links a:hover, .links a:focus-visible { border-color: #7b2ff2; color: #5b1fc2; outline: none; }
+  .links svg { width: 16px; height: 16px; flex: none; }
+  /* projects get their own line: monospace, and the label glitches on hover */
+  .projects { display: inline-block; margin-top: 16px; font: 700 12px/1 "Space Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase;
+    color: #7b2ff2; text-decoration: none; padding: 8px 12px; border: 1px dashed rgba(123, 47, 242, .45); border-radius: 4px; transition: background .2s, border-color .2s; }
+  .projects b { display: inline-block; transition: transform .25s; }
+  .projects span { position: relative; display: inline-block; }
+  .projects:hover, .projects:focus-visible { background: rgba(123, 47, 242, .08); border-style: solid; outline: none; }
+  .projects:hover b { transform: translateX(4px); }
+  .projects:hover span::before, .projects:hover span::after { content: attr(data-t); position: absolute; inset: 0; animation: tglitch .5s steps(2) infinite; }
+  .projects:hover span::before { color: #ff005a; transform: translate(-2px, 0); clip-path: inset(0 0 55% 0); }
+  .projects:hover span::after { color: #00beff; transform: translate(2px, 0); clip-path: inset(50% 0 0 0); animation-delay: -.25s; }
+  @keyframes tglitch { 0% { clip-path: inset(0 0 60% 0); } 25% { clip-path: inset(40% 0 20% 0); } 50% { clip-path: inset(70% 0 0 0); } 75% { clip-path: inset(10% 0 70% 0); } 100% { clip-path: inset(0 0 60% 0); } }
+  @media (prefers-reduced-motion: reduce) { .projects:hover span::before, .projects:hover span::after { animation: none; } }
+  .hint { position: fixed; left: 0; right: 0; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--quiet);
+    font-size: 12px; letter-spacing: .04em; transition: opacity 1.2s; pointer-events: none; }
+  body.moved .hint { opacity: 0; }
+  @media (hover: none) { .hint .mouse { display: none; } } @media (hover: hover) { .hint .touch { display: none; } }
+  #loading { position: fixed; inset: 0; display: grid; place-items: center; color: var(--quiet); }
+  #edit { display: none; }
+</style>
+</head>
+<body>
+<div id="zones"></div>
+<main>
+  <div id="figure"><canvas id="flames"></canvas><canvas id="rig"></canvas></div>
+  <div class="who">
+    <div class="eyebrow">ML Research Engineer</div>
+    <h1>Nils Fleischmann</h1>
+    <div class="role">Building fast generative models</div>
+    <nav class="links">
+      <a data-style="pixel" href="https://github.com/nifleisch" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub</a>
+      <a data-style="vector" href="https://www.linkedin.com/in/nilsfleischmann/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zM4.94 13.4V6.17H2.54v7.23h2.4zM3.74 5.18c.84 0 1.36-.56 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.22V9.36c0-.22.02-.43.08-.58.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.28 0-1.84.7-2.16 1.2v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.23 0 7.23h2.4z"/></svg>
+        LinkedIn</a>
+      <a data-style="glitch" href="https://x.com/nifleisch" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6.75h2.45L9.7 6.9 16 15.25h-4.94l-3.87-5.06-4.43 5.06H.31l5.73-6.55L0 .75h5.06l3.5 4.63L12.6.75zm-.86 13.03h1.36L4.32 2.15H2.86l8.88 11.63z"/></svg>
+        X</a>
+      <a data-style="paper" href="assets/cv.pdf" target="_blank" rel="noopener" title="CV (PDF)">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.5 1.5h6l3 3v10h-9z"/><path d="M9.5 1.5v3h3M5.5 8h5M5.5 10.5h5M5.5 13h3"/></svg>
+        CV</a>
+    </nav>
+    <a class="projects" data-style="blueprint" href="projects.html"><span data-t="See my projects">See my projects</span> <b>→</b></a>
+  </div>
+</main>
+<div id="loading">loading…</div>
+<pre id="edit"></pre>
+<script src="bg.js"></script>
+<script src="flames.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

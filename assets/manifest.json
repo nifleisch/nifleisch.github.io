@@ -1,0 +1,1341 @@
+{
+ "styles": [
+  {
+   "id": "base",
+   "name": "Original",
+   "parts": {
+    "body": "orig/base/body.webp",
+    "nose": "orig/base/nose.webp",
+    "leaf": "orig/base/leaf.webp",
+    "arm_l": "orig/base/arm_l.webp",
+    "arm_r": "orig/base/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#14002b",
+     "#5b16c2",
+     "#b46cff",
+     "#f6e8ff"
+    ],
+    "art": "assets/orig/base/flames.webp"
+   },
+   "lid": "#761db0",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "clay",
+   "name": "Claymation",
+   "parts": {
+    "body": "orig/clay/body.webp",
+    "nose": "orig/clay/nose.webp",
+    "leaf": "orig/clay/leaf.webp",
+    "arm_l": "orig/clay/arm_l.webp",
+    "arm_r": "orig/clay/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#3a1050",
+     "#8a3fc9",
+     "#d59cff",
+     "#ffe9f6"
+    ],
+    "materialAmount": 0.8,
+    "steps": 6,
+    "art": "assets/orig/clay/flames.webp"
+   },
+   "lid": "#7f4d9f",
+   "lidLine": "#453f45",
+   "eyes": [
+    {
+     "cx": 64.69,
+     "cy": 63.31,
+     "rx": 6.69,
+     "ry": 5.81
+    },
+    {
+     "cx": 78.62,
+     "cy": 63.25,
+     "rx": 6.75,
+     "ry": 5.75
+    }
+   ]
+  },
+  {
+   "id": "felt",
+   "name": "Felted wool",
+   "parts": {
+    "body": "orig/felt/body.webp",
+    "nose": "orig/felt/nose.webp",
+    "leaf": "orig/felt/leaf.webp",
+    "arm_l": "orig/felt/arm_l.webp",
+    "arm_r": "orig/felt/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "materialAmount": 0.7,
+    "art": "assets/orig/felt/flames.webp"
+   },
+   "lid": "#4b2472",
+   "lidLine": "#222c19",
+   "eyes": [
+    {
+     "cx": 63.38,
+     "cy": 67.56,
+     "rx": 6.88,
+     "ry": 6.44
+    },
+    {
+     "cx": 78.12,
+     "cy": 67.25,
+     "rx": 6.75,
+     "ry": 6.0
+    }
+   ]
+  },
+  {
+   "id": "vector",
+   "name": "Smooth vector",
+   "parts": {
+    "body": "orig/vector/body.webp",
+    "nose": "orig/vector/nose.webp",
+    "leaf": "orig/vector/leaf.webp",
+    "arm_l": "orig/vector/arm_l.webp",
+    "arm_r": "orig/vector/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a5e",
+     "#7b2ff2",
+     "#c58bff",
+     "#f6e8ff"
+    ],
+    "art": "assets/orig/vector/flames.webp"
+   },
+   "lid": "#772cae",
+   "lidLine": "#030405",
+   "eyes": [
+    {
+     "cx": 63.12,
+     "cy": 67.31,
+     "rx": 6.12,
+     "ry": 5.81
+    },
+    {
+     "cx": 77.69,
+     "cy": 67.25,
+     "rx": 6.06,
+     "ry": 5.75
+    }
+   ]
+  },
+  {
+   "id": "paper",
+   "name": "Paper cut-out",
+   "parts": {
+    "body": "orig/paper/body.webp",
+    "nose": "orig/paper/nose.webp",
+    "leaf": "orig/paper/leaf.webp",
+    "arm_l": "orig/paper/arm_l.webp",
+    "arm_r": "orig/paper/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#3b0d6b",
+     "#8b45e0",
+     "#cfa3ff",
+     "#fbf1ff"
+    ],
+    "steps": 4,
+    "art": "assets/orig/paper/flames.webp"
+   },
+   "lid": "#793db3",
+   "lidLine": "#572881",
+   "eyes": [
+    {
+     "cx": 64.75,
+     "cy": 68.56,
+     "rx": 8.75,
+     "ry": 6.94
+    },
+    {
+     "cx": 76.56,
+     "cy": 68.31,
+     "rx": 8.56,
+     "ry": 6.69
+    }
+   ]
+  },
+  {
+   "id": "glitch",
+   "name": "Latent space",
+   "parts": {
+    "body": "orig/glitch/body.webp",
+    "nose": "orig/glitch/nose.webp",
+    "leaf": "orig/glitch/leaf.webp",
+    "arm_l": "orig/glitch/arm_l.webp",
+    "arm_r": "orig/glitch/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#000000",
+     "#00e5ff",
+     "#ff00d4",
+     "#ffffff"
+    ],
+    "steps": 8,
+    "art": "assets/orig/glitch/flames.webp"
+   },
+   "lid": "#701cb1",
+   "lidLine": "#040305",
+   "eyes": [
+    {
+     "cx": 63.31,
+     "cy": 68.69,
+     "rx": 5.69,
+     "ry": 5.56
+    },
+    {
+     "cx": 78.5,
+     "cy": 68.69,
+     "rx": 5.25,
+     "ry": 5.56
+    }
+   ]
+  },
+  {
+   "id": "watercolor",
+   "name": "Watercolor",
+   "parts": {
+    "body": "orig/watercolor/body.webp",
+    "nose": "orig/watercolor/nose.webp",
+    "leaf": "orig/watercolor/leaf.webp",
+    "arm_l": "orig/watercolor/arm_l.webp",
+    "arm_r": "orig/watercolor/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/watercolor/flames.webp"
+   },
+   "lid": "#ae78d0",
+   "lidLine": "#6d7071",
+   "eyes": [
+    {
+     "cx": 63.62,
+     "cy": 67.56,
+     "rx": 7.0,
+     "ry": 6.69
+    },
+    {
+     "cx": 78.31,
+     "cy": 67.62,
+     "rx": 6.94,
+     "ry": 6.88
+    }
+   ]
+  },
+  {
+   "id": "crayon",
+   "name": "Crayon",
+   "parts": {
+    "body": "orig/crayon/body.webp",
+    "nose": "orig/crayon/nose.webp",
+    "leaf": "orig/crayon/leaf.webp",
+    "arm_l": "orig/crayon/arm_l.webp",
+    "arm_r": "orig/crayon/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/crayon/flames.webp"
+   },
+   "lid": "#8a48d7",
+   "lidLine": "#0c1512",
+   "eyes": [
+    {
+     "cx": 63.19,
+     "cy": 67.38,
+     "rx": 6.06,
+     "ry": 5.88
+    },
+    {
+     "cx": 77.81,
+     "cy": 67.31,
+     "rx": 6.06,
+     "ry": 5.69
+    }
+   ]
+  },
+  {
+   "id": "stitch",
+   "name": "Embroidery",
+   "parts": {
+    "body": "orig/stitch/body.webp",
+    "nose": "orig/stitch/nose.webp",
+    "leaf": "orig/stitch/leaf.webp",
+    "arm_l": "orig/stitch/arm_l.webp",
+    "arm_r": "orig/stitch/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/stitch/flames.webp"
+   },
+   "lid": "#7139aa",
+   "lidLine": "#2c1644",
+   "eyes": [
+    {
+     "cx": 63.31,
+     "cy": 68.25,
+     "rx": 6.94,
+     "ry": 6.5
+    },
+    {
+     "cx": 77.88,
+     "cy": 68.19,
+     "rx": 7.0,
+     "ry": 6.44
+    }
+   ]
+  },
+  {
+   "id": "bricks",
+   "name": "Toy bricks",
+   "parts": {
+    "body": "orig/bricks/body.webp",
+    "nose": "orig/bricks/nose.webp",
+    "leaf": "orig/bricks/leaf.webp",
+    "arm_l": "orig/bricks/arm_l.webp",
+    "arm_r": "orig/bricks/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/bricks/flames.webp"
+   },
+   "lid": "#7a3aa9",
+   "lidLine": "#1a1c1f",
+   "eyes": [
+    {
+     "cx": 63.38,
+     "cy": 65.31,
+     "rx": 6.5,
+     "ry": 5.94
+    },
+    {
+     "cx": 78.0,
+     "cy": 65.31,
+     "rx": 6.38,
+     "ry": 5.94
+    }
+   ]
+  },
+  {
+   "id": "glass",
+   "name": "Stained glass",
+   "parts": {
+    "body": "orig/glass/body.webp",
+    "nose": "orig/glass/nose.webp",
+    "leaf": "orig/glass/leaf.webp",
+    "arm_l": "orig/glass/arm_l.webp",
+    "arm_r": "orig/glass/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/glass/flames.webp"
+   },
+   "lid": "#6b20c0",
+   "lidLine": "#10190e",
+   "eyes": [
+    {
+     "cx": 63.25,
+     "cy": 67.38,
+     "rx": 6.0,
+     "ry": 5.88
+    },
+    {
+     "cx": 77.94,
+     "cy": 67.31,
+     "rx": 5.94,
+     "ry": 5.56
+    }
+   ]
+  },
+  {
+   "id": "woodblock",
+   "name": "Woodblock",
+   "parts": {
+    "body": "orig/woodblock/body.webp",
+    "nose": "orig/woodblock/nose.webp",
+    "leaf": "orig/woodblock/leaf.webp",
+    "arm_l": "orig/woodblock/arm_l.webp",
+    "arm_r": "orig/woodblock/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/woodblock/flames.webp"
+   },
+   "lid": "#785483",
+   "lidLine": "#091210",
+   "eyes": [
+    {
+     "cx": 63.25,
+     "cy": 67.44,
+     "rx": 6.0,
+     "ry": 5.81
+    },
+    {
+     "cx": 77.81,
+     "cy": 67.44,
+     "rx": 6.06,
+     "ry": 5.81
+    }
+   ]
+  },
+  {
+   "id": "render3d",
+   "name": "3D render",
+   "parts": {
+    "body": "orig/render3d/body.webp",
+    "nose": "orig/render3d/nose.webp",
+    "leaf": "orig/render3d/leaf.webp",
+    "arm_l": "orig/render3d/arm_l.webp",
+    "arm_r": "orig/render3d/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/render3d/flames.webp"
+   },
+   "lid": "#a276bb",
+   "lidLine": "#726766",
+   "eyes": [
+    {
+     "cx": 64.19,
+     "cy": 63.62,
+     "rx": 7.19,
+     "ry": 5.25
+    },
+    {
+     "cx": 78.56,
+     "cy": 64.0,
+     "rx": 7.06,
+     "ry": 5.62
+    }
+   ]
+  },
+  {
+   "id": "marble",
+   "name": "Marble",
+   "parts": {
+    "body": "orig/marble/body.webp",
+    "nose": "orig/marble/nose.webp",
+    "leaf": "orig/marble/leaf.webp",
+    "arm_l": "orig/marble/arm_l.webp",
+    "arm_r": "orig/marble/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/marble/flames.webp"
+   },
+   "lid": "#d0ccca",
+   "lidLine": "#83847b",
+   "eyes": [
+    {
+     "cx": 64.94,
+     "cy": 66.69,
+     "rx": 8.56,
+     "ry": 4.94
+    },
+    {
+     "cx": 76.31,
+     "cy": 66.12,
+     "rx": 8.31,
+     "ry": 4.38
+    }
+   ]
+  },
+  {
+   "id": "comic",
+   "name": "Comic",
+   "parts": {
+    "body": "orig/comic/body.webp",
+    "nose": "orig/comic/nose.webp",
+    "leaf": "orig/comic/leaf.webp",
+    "arm_l": "orig/comic/arm_l.webp",
+    "arm_r": "orig/comic/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/comic/flames.webp"
+   },
+   "lid": "#8330bb",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.12,
+     "cy": 66.88,
+     "rx": 6.0,
+     "ry": 5.38
+    },
+    {
+     "cx": 77.62,
+     "cy": 66.75,
+     "rx": 6.0,
+     "ry": 5.38
+    }
+   ]
+  },
+  {
+   "id": "knit",
+   "name": "Knitted",
+   "parts": {
+    "body": "orig/knit/body.webp",
+    "nose": "orig/knit/nose.webp",
+    "leaf": "orig/knit/leaf.webp",
+    "arm_l": "orig/knit/arm_l.webp",
+    "arm_r": "orig/knit/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/knit/flames.webp"
+   },
+   "lid": "#5b2d87",
+   "lidLine": "#3a263e",
+   "eyes": [
+    {
+     "cx": 63.44,
+     "cy": 68.0,
+     "rx": 6.94,
+     "ry": 6.5
+    },
+    {
+     "cx": 77.75,
+     "cy": 68.06,
+     "rx": 7.0,
+     "ry": 6.44
+    }
+   ]
+  },
+  {
+   "id": "crochet",
+   "name": "Crochet",
+   "parts": {
+    "body": "orig/crochet/body.webp",
+    "nose": "orig/crochet/nose.webp",
+    "leaf": "orig/crochet/leaf.webp",
+    "arm_l": "orig/crochet/arm_l.webp",
+    "arm_r": "orig/crochet/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/crochet/flames.webp"
+   },
+   "lid": "#5c2b86",
+   "lidLine": "#3c2347",
+   "eyes": [
+    {
+     "cx": 63.56,
+     "cy": 65.62,
+     "rx": 7.69,
+     "ry": 7.12
+    },
+    {
+     "cx": 79.0,
+     "cy": 65.31,
+     "rx": 7.25,
+     "ry": 6.69
+    }
+   ]
+  },
+  {
+   "id": "origami",
+   "name": "Origami",
+   "parts": {
+    "body": "orig/origami/body.webp",
+    "nose": "orig/origami/nose.webp",
+    "leaf": "orig/origami/leaf.webp",
+    "arm_l": "orig/origami/arm_l.webp",
+    "arm_r": "orig/origami/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/origami/flames.webp"
+   },
+   "lid": "#793dae",
+   "lidLine": "#3e284e",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 67.56,
+     "rx": 6.88,
+     "ry": 6.56
+    },
+    {
+     "cx": 77.81,
+     "cy": 67.06,
+     "rx": 6.56,
+     "ry": 6.44
+    }
+   ]
+  },
+  {
+   "id": "pencil",
+   "name": "Pencil sketch",
+   "parts": {
+    "body": "orig/pencil/body.webp",
+    "nose": "orig/pencil/nose.webp",
+    "leaf": "orig/pencil/leaf.webp",
+    "arm_l": "orig/pencil/arm_l.webp",
+    "arm_r": "orig/pencil/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/pencil/flames.webp"
+   },
+   "lid": "#eff0ed",
+   "lidLine": "#677069",
+   "eyes": [
+    {
+     "cx": 63.44,
+     "cy": 68.62,
+     "rx": 6.06,
+     "ry": 5.62
+    },
+    {
+     "cx": 77.94,
+     "cy": 68.62,
+     "rx": 6.06,
+     "ry": 5.62
+    }
+   ]
+  },
+  {
+   "id": "oil",
+   "name": "Oil painting",
+   "parts": {
+    "body": "orig/oil/body.webp",
+    "nose": "orig/oil/nose.webp",
+    "leaf": "orig/oil/leaf.webp",
+    "arm_l": "orig/oil/arm_l.webp",
+    "arm_r": "orig/oil/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/oil/flames.webp"
+   },
+   "lid": "#6d30a8",
+   "lidLine": "#0a0d0f",
+   "eyes": [
+    {
+     "cx": 63.44,
+     "cy": 65.69,
+     "rx": 6.44,
+     "ry": 6.31
+    },
+    {
+     "cx": 78.25,
+     "cy": 65.69,
+     "rx": 6.25,
+     "ry": 6.06
+    }
+   ]
+  },
+  {
+   "id": "popart",
+   "name": "Pop art",
+   "parts": {
+    "body": "orig/popart/body.webp",
+    "nose": "orig/popart/nose.webp",
+    "leaf": "orig/popart/leaf.webp",
+    "arm_l": "orig/popart/arm_l.webp",
+    "arm_r": "orig/popart/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/popart/flames.webp"
+   },
+   "lid": "#8c01dd",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.31,
+     "cy": 67.56,
+     "rx": 5.94,
+     "ry": 5.56
+    },
+    {
+     "cx": 78.0,
+     "cy": 67.44,
+     "rx": 5.62,
+     "ry": 5.56
+    }
+   ]
+  },
+  {
+   "id": "mosaic",
+   "name": "Mosaic",
+   "parts": {
+    "body": "orig/mosaic/body.webp",
+    "nose": "orig/mosaic/nose.webp",
+    "leaf": "orig/mosaic/leaf.webp",
+    "arm_l": "orig/mosaic/arm_l.webp",
+    "arm_r": "orig/mosaic/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/mosaic/flames.webp"
+   },
+   "lid": "#704790",
+   "lidLine": "#1c1e1b",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "balloon",
+   "name": "Balloon",
+   "parts": {
+    "body": "orig/balloon/body.webp",
+    "nose": "orig/balloon/nose.webp",
+    "leaf": "orig/balloon/leaf.webp",
+    "arm_l": "orig/balloon/arm_l.webp",
+    "arm_r": "orig/balloon/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/balloon/flames.webp"
+   },
+   "lid": "#9257bf",
+   "lidLine": "#030605",
+   "eyes": [
+    {
+     "cx": 63.06,
+     "cy": 66.94,
+     "rx": 6.31,
+     "ry": 5.44
+    },
+    {
+     "cx": 77.56,
+     "cy": 66.75,
+     "rx": 6.06,
+     "ry": 5.25
+    }
+   ]
+  },
+  {
+   "id": "plush",
+   "name": "Plush toy",
+   "parts": {
+    "body": "orig/plush/body.webp",
+    "nose": "orig/plush/nose.webp",
+    "leaf": "orig/plush/leaf.webp",
+    "arm_l": "orig/plush/arm_l.webp",
+    "arm_r": "orig/plush/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/plush/flames.webp"
+   },
+   "lid": "#552082",
+   "lidLine": "#513e5a",
+   "eyes": [
+    {
+     "cx": 64.81,
+     "cy": 67.56,
+     "rx": 8.69,
+     "ry": 6.06
+    },
+    {
+     "cx": 76.56,
+     "cy": 67.12,
+     "rx": 8.56,
+     "ry": 5.62
+    }
+   ]
+  },
+  {
+   "id": "candy",
+   "name": "Candy",
+   "parts": {
+    "body": "orig/candy/body.webp",
+    "nose": "orig/candy/nose.webp",
+    "leaf": "orig/candy/leaf.webp",
+    "arm_l": "orig/candy/arm_l.webp",
+    "arm_r": "orig/candy/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/candy/flames.webp"
+   },
+   "lid": "#6c2982",
+   "lidLine": "#634a59",
+   "eyes": [
+    {
+     "cx": 64.88,
+     "cy": 68.25,
+     "rx": 8.62,
+     "ry": 6.62
+    },
+    {
+     "cx": 76.56,
+     "cy": 68.19,
+     "rx": 8.56,
+     "ry": 6.44
+    }
+   ]
+  },
+  {
+   "id": "gold",
+   "name": "Gold",
+   "parts": {
+    "body": "orig/gold/body.webp",
+    "nose": "orig/gold/nose.webp",
+    "leaf": "orig/gold/leaf.webp",
+    "arm_l": "orig/gold/arm_l.webp",
+    "arm_r": "orig/gold/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/gold/flames.webp"
+   },
+   "lid": "#ebc548",
+   "lidLine": "#78850f",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 67.44,
+     "rx": 7.12,
+     "ry": 5.69
+    },
+    {
+     "cx": 77.62,
+     "cy": 67.06,
+     "rx": 6.75,
+     "ry": 5.31
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "name": "Ice sculpture",
+   "parts": {
+    "body": "orig/ice/body.webp",
+    "nose": "orig/ice/nose.webp",
+    "leaf": "orig/ice/leaf.webp",
+    "arm_l": "orig/ice/arm_l.webp",
+    "arm_r": "orig/ice/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/ice/flames.webp"
+   },
+   "lid": "#7a75cb",
+   "lidLine": "#7669c3",
+   "eyes": [
+    {
+     "cx": 62.94,
+     "cy": 69.06,
+     "rx": 7.19,
+     "ry": 7.31
+    },
+    {
+     "cx": 77.69,
+     "cy": 68.5,
+     "rx": 6.31,
+     "ry": 6.62
+    }
+   ]
+  },
+  {
+   "id": "blueprint",
+   "name": "Blueprint",
+   "parts": {
+    "body": "orig/blueprint/body.webp",
+    "nose": "orig/blueprint/nose.webp",
+    "leaf": "orig/blueprint/leaf.webp",
+    "arm_l": "orig/blueprint/arm_l.webp",
+    "arm_r": "orig/blueprint/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/blueprint/flames.webp"
+   },
+   "lid": "#0582d4",
+   "lidLine": "#007bcf",
+   "eyes": [
+    {
+     "cx": 63.38,
+     "cy": 68.69,
+     "rx": 6.0,
+     "ry": 5.56
+    },
+    {
+     "cx": 77.94,
+     "cy": 68.75,
+     "rx": 5.94,
+     "ry": 5.62
+    }
+   ]
+  },
+  {
+   "id": "graffiti",
+   "name": "Graffiti",
+   "parts": {
+    "body": "orig/graffiti/body.webp",
+    "nose": "orig/graffiti/nose.webp",
+    "leaf": "orig/graffiti/leaf.webp",
+    "arm_l": "orig/graffiti/arm_l.webp",
+    "arm_r": "orig/graffiti/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/graffiti/flames.webp"
+   },
+   "lid": "#8225cd",
+   "lidLine": "#0b071e",
+   "eyes": [
+    {
+     "cx": 63.12,
+     "cy": 67.0,
+     "rx": 6.88,
+     "ry": 7.0
+    },
+    {
+     "cx": 78.12,
+     "cy": 67.12,
+     "rx": 6.62,
+     "ry": 6.75
+    }
+   ]
+  },
+  {
+   "id": "sketchnote",
+   "name": "Ballpoint doodle",
+   "parts": {
+    "body": "orig/sketchnote/body.webp",
+    "nose": "orig/sketchnote/nose.webp",
+    "leaf": "orig/sketchnote/leaf.webp",
+    "arm_l": "orig/sketchnote/arm_l.webp",
+    "arm_r": "orig/sketchnote/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/sketchnote/flames.webp"
+   },
+   "lid": "#8aaaf2",
+   "lidLine": "#0221b8",
+   "eyes": [
+    {
+     "cx": 63.44,
+     "cy": 68.62,
+     "rx": 5.94,
+     "ry": 5.62
+    },
+    {
+     "cx": 77.94,
+     "cy": 68.62,
+     "rx": 5.94,
+     "ry": 5.62
+    }
+   ]
+  },
+  {
+   "id": "pixel",
+   "name": "Pixel art",
+   "parts": {
+    "body": "orig/pixel/body.webp",
+    "nose": "orig/pixel/nose.webp",
+    "leaf": "orig/pixel/leaf.webp",
+    "arm_l": "orig/pixel/arm_l.webp",
+    "arm_r": "orig/pixel/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/pixel/flames.webp"
+   },
+   "lid": "#7b2eb5",
+   "lidLine": "#020202",
+   "eyes": [
+    {
+     "cx": 63.06,
+     "cy": 67.19,
+     "rx": 6.06,
+     "ry": 6.19
+    },
+    {
+     "cx": 77.69,
+     "cy": 67.06,
+     "rx": 5.81,
+     "ry": 6.06
+    }
+   ]
+  },
+  {
+   "id": "xray",
+   "name": "X-ray",
+   "parts": {
+    "body": "orig/xray/body.webp",
+    "nose": "orig/xray/nose.webp",
+    "leaf": "orig/xray/leaf.webp",
+    "arm_l": "orig/xray/arm_l.webp",
+    "arm_r": "orig/xray/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/xray/flames.webp"
+   },
+   "lid": "#416d98",
+   "lidLine": "#031210",
+   "eyes": [
+    {
+     "cx": 63.31,
+     "cy": 67.56,
+     "rx": 6.19,
+     "ry": 5.81
+    },
+    {
+     "cx": 77.69,
+     "cy": 67.62,
+     "rx": 6.06,
+     "ry": 5.75
+    }
+   ]
+  },
+  {
+   "id": "real",
+   "name": "Realistic",
+   "parts": {
+    "body": "orig/real/body.webp",
+    "nose": "orig/real/nose.webp",
+    "leaf": "orig/real/leaf.webp",
+    "arm_l": "orig/real/arm_l.webp",
+    "arm_r": "orig/real/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/real/flames.webp"
+   },
+   "lid": "#815c98",
+   "lidLine": "#5f4970",
+   "eyes": [
+    {
+     "cx": 64.12,
+     "cy": 63.69,
+     "rx": 5.88,
+     "ry": 4.94
+    },
+    {
+     "cx": 78.31,
+     "cy": 63.5,
+     "rx": 5.81,
+     "ry": 4.88
+    }
+   ]
+  },
+  {
+   "id": "lowpoly",
+   "name": "Low poly",
+   "parts": {
+    "body": "orig/lowpoly/body.webp",
+    "nose": "orig/lowpoly/nose.webp",
+    "leaf": "orig/lowpoly/leaf.webp",
+    "arm_l": "orig/lowpoly/arm_l.webp",
+    "arm_r": "orig/lowpoly/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/lowpoly/flames.webp"
+   },
+   "lid": "#8142b4",
+   "lidLine": "#615c68",
+   "eyes": [
+    {
+     "cx": 63.56,
+     "cy": 67.56,
+     "rx": 7.06,
+     "ry": 6.19
+    },
+    {
+     "cx": 78.0,
+     "cy": 67.31,
+     "rx": 7.0,
+     "ry": 5.94
+    }
+   ]
+  },
+  {
+   "id": "anime",
+   "name": "Anime",
+   "parts": {
+    "body": "orig/anime/body.webp",
+    "nose": "orig/anime/nose.webp",
+    "leaf": "orig/anime/leaf.webp",
+    "arm_l": "orig/anime/arm_l.webp",
+    "arm_r": "orig/anime/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/anime/flames.webp"
+   },
+   "lid": "#7c3aad",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.31,
+     "cy": 66.75,
+     "rx": 6.19,
+     "ry": 5.88
+    },
+    {
+     "cx": 77.88,
+     "cy": 66.62,
+     "rx": 6.12,
+     "ry": 5.88
+    }
+   ]
+  },
+  {
+   "id": "porcelain",
+   "name": "Porcelain",
+   "parts": {
+    "body": "orig/porcelain/body.webp",
+    "nose": "orig/porcelain/nose.webp",
+    "leaf": "orig/porcelain/leaf.webp",
+    "arm_l": "orig/porcelain/arm_l.webp",
+    "arm_r": "orig/porcelain/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/porcelain/flames.webp"
+   },
+   "lid": "#83579e",
+   "lidLine": "#0f1211",
+   "eyes": [
+    {
+     "cx": 63.44,
+     "cy": 68.0,
+     "rx": 6.19,
+     "ry": 5.75
+    },
+    {
+     "cx": 77.94,
+     "cy": 67.88,
+     "rx": 6.06,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "wood",
+   "name": "Carved wood",
+   "parts": {
+    "body": "orig/wood/body.webp",
+    "nose": "orig/wood/nose.webp",
+    "leaf": "orig/wood/leaf.webp",
+    "arm_l": "orig/wood/arm_l.webp",
+    "arm_r": "orig/wood/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a0a4a",
+     "#7a3fd1",
+     "#c9a2ff",
+     "#f3e6ff"
+    ],
+    "art": "assets/orig/wood/flames.webp"
+   },
+   "lid": "#6f379a",
+   "lidLine": "#383430",
+   "eyes": [
+    {
+     "cx": 62.88,
+     "cy": 67.81,
+     "rx": 6.5,
+     "ry": 6.31
+    },
+    {
+     "cx": 77.25,
+     "cy": 67.88,
+     "rx": 6.38,
+     "ry": 6.38
+    }
+   ]
+  }
+ ]
+}

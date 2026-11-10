@@ -260,7 +260,7 @@
     st.vp += (tpitch - st.pitch) * kk * dt - st.vp * damp * dt; st.pitch += st.vp * dt;
     const near = Math.max(0, 1 - Math.hypot(dx, dy) / 0.9);
     st.vl += (near - st.lean) * 30 * dt - st.vl * 9 * dt; st.lean += st.vl * dt;
-    st.vleaf += (-st.vy * 0.35 - st.leaf) * 90 * dt - st.vleaf * 5 * dt; st.leaf += st.vleaf * dt;   // leaf lags the head
+    // the leaf stays still (Nils didn't like it wobbling); st.leaf stays 0
     st.click = now < clickUntil;
     // pupils: look straight at the cursor (no spring: googly eyes are snappy)
     const ex = (mx - cx), ey = (my - (r.top + r.height * (FRAME ? 0.55 : 0.375))), len = Math.hypot(ex, ey), sat = Math.min(1, len / 160);

@@ -1336,6 +1336,438 @@
      "ry": 6.38
     }
    ]
+  },
+  {
+   "id": "lava",
+   "name": "Molten lava",
+   "parts": {
+    "body": "orig/lava/body.webp",
+    "nose": "orig/lava/nose.webp",
+    "leaf": "orig/lava/leaf.webp",
+    "arm_l": "orig/lava/arm_l.webp",
+    "arm_r": "orig/lava/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#120000",
+     "#8a1500",
+     "#ff6a00",
+     "#fff1a8"
+    ],
+    "art": "assets/orig/lava/flames.webp"
+   },
+   "lid": "#ba2703",
+   "lidLine": "#2a0903",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "circuit",
+   "name": "Circuit board",
+   "parts": {
+    "body": "orig/circuit/body.webp",
+    "nose": "orig/circuit/nose.webp",
+    "leaf": "orig/circuit/leaf.webp",
+    "arm_l": "orig/circuit/arm_l.webp",
+    "arm_r": "orig/circuit/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#001a0d",
+     "#0b6b3a",
+     "#d9a441",
+     "#fff4c2"
+    ],
+    "art": "assets/orig/circuit/flames.webp"
+   },
+   "lid": "#104822",
+   "lidLine": "#000100",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "chrome",
+   "name": "Liquid chrome",
+   "parts": {
+    "body": "orig/chrome/body.webp",
+    "nose": "orig/chrome/nose.webp",
+    "leaf": "orig/chrome/leaf.webp",
+    "arm_l": "orig/chrome/arm_l.webp",
+    "arm_r": "orig/chrome/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#0d0d12",
+     "#5a5f6e",
+     "#cfd6e4",
+     "#ffffff"
+    ],
+    "art": "assets/orig/chrome/flames.webp"
+   },
+   "lid": "#adada8",
+   "lidLine": "#141313",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "moss",
+   "name": "Overgrown",
+   "parts": {
+    "body": "orig/moss/body.webp",
+    "nose": "orig/moss/nose.webp",
+    "leaf": "orig/moss/leaf.webp",
+    "arm_l": "orig/moss/arm_l.webp",
+    "arm_r": "orig/moss/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#0b1a05",
+     "#2e6b1a",
+     "#9bd14a",
+     "#f2ffd0"
+    ],
+    "art": "assets/orig/moss/flames.webp"
+   },
+   "lid": "#3f5306",
+   "lidLine": "#0a1301",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "tattoo",
+   "name": "Tattoo flash",
+   "parts": {
+    "body": "orig/tattoo/body.webp",
+    "nose": "orig/tattoo/nose.webp",
+    "leaf": "orig/tattoo/leaf.webp",
+    "arm_l": "orig/tattoo/arm_l.webp",
+    "arm_r": "orig/tattoo/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#1a0000",
+     "#b5121b",
+     "#f2b705",
+     "#fff5e0"
+    ],
+    "art": "assets/orig/tattoo/flames.webp"
+   },
+   "lid": "#00958d",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "manuscript",
+   "name": "Illuminated manuscript",
+   "parts": {
+    "body": "orig/manuscript/body.webp",
+    "nose": "orig/manuscript/nose.webp",
+    "leaf": "orig/manuscript/leaf.webp",
+    "arm_l": "orig/manuscript/arm_l.webp",
+    "arm_r": "orig/manuscript/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#1a0c00",
+     "#1c3f9e",
+     "#d4a017",
+     "#fff6d8"
+    ],
+    "art": "assets/orig/manuscript/flames.webp"
+   },
+   "lid": "#0d2882",
+   "lidLine": "#2c2213",
+   "eyes": [
+    {
+     "cx": 63.56,
+     "cy": 67.56,
+     "rx": 4.94,
+     "ry": 4.69
+    },
+    {
+     "cx": 77.62,
+     "cy": 67.69,
+     "rx": 4.88,
+     "ry": 4.69
+    }
+   ]
+  },
+  {
+   "id": "bauhaus",
+   "name": "Bauhaus",
+   "parts": {
+    "body": "orig/bauhaus/body.webp",
+    "nose": "orig/bauhaus/nose.webp",
+    "leaf": "orig/bauhaus/leaf.webp",
+    "arm_l": "orig/bauhaus/arm_l.webp",
+    "arm_r": "orig/bauhaus/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#111111",
+     "#d62b1f",
+     "#f2c300",
+     "#1d4fa8"
+    ],
+    "art": "assets/orig/bauhaus/flames.webp"
+   },
+   "lid": "#ef1904",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 66.38,
+     "rx": 6.5,
+     "ry": 6.25
+    },
+    {
+     "cx": 77.81,
+     "cy": 66.44,
+     "rx": 6.31,
+     "ry": 6.19
+    }
+   ]
+  },
+  {
+   "id": "bauhaus2",
+   "name": "Bauhaus II",
+   "parts": {
+    "body": "orig/bauhaus2/body.webp",
+    "nose": "orig/bauhaus2/nose.webp",
+    "leaf": "orig/bauhaus2/leaf.webp",
+    "arm_l": "orig/bauhaus2/arm_l.webp",
+    "arm_r": "orig/bauhaus2/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#111111",
+     "#d62b1f",
+     "#f2c300",
+     "#1d4fa8"
+    ],
+    "art": "assets/orig/bauhaus2/flames.webp"
+   },
+   "lid": "#b8210f",
+   "lidLine": "#000000",
+   "eyes": [
+    {
+     "cx": 63.69,
+     "cy": 68.38,
+     "rx": 6.31,
+     "ry": 6.12
+    },
+    {
+     "cx": 77.88,
+     "cy": 68.44,
+     "rx": 6.25,
+     "ry": 6.06
+    }
+   ]
+  },
+  {
+   "id": "neural",
+   "name": "Neural net",
+   "parts": {
+    "body": "orig/neural/body.webp",
+    "nose": "orig/neural/nose.webp",
+    "leaf": "orig/neural/leaf.webp",
+    "arm_l": "orig/neural/arm_l.webp",
+    "arm_r": "orig/neural/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#030616",
+     "#1b2a8f",
+     "#4fd1ff",
+     "#e8fbff"
+    ],
+    "art": "assets/orig/neural/flames.webp"
+   },
+   "lid": "#102e68",
+   "lidLine": "#02193f",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.56,
+     "rx": 6.0,
+     "ry": 5.56
+    },
+    {
+     "cx": 77.81,
+     "cy": 68.62,
+     "rx": 6.06,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "cake",
+   "name": "Birthday cake",
+   "parts": {
+    "body": "orig/cake/body.webp",
+    "nose": "orig/cake/nose.webp",
+    "leaf": "orig/cake/leaf.webp",
+    "arm_l": "orig/cake/arm_l.webp",
+    "arm_r": "orig/cake/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#4a1030",
+     "#ff6fb1",
+     "#ffd1e6",
+     "#fffaf0"
+    ],
+    "art": "assets/orig/cake/flames.webp"
+   },
+   "lid": "#ae91ae",
+   "lidLine": "#080a05",
+   "eyes": [
+    {
+     "cx": 63.56,
+     "cy": 67.38,
+     "rx": 6.19,
+     "ry": 4.88
+    },
+    {
+     "cx": 77.12,
+     "cy": 67.38,
+     "rx": 6.38,
+     "ry": 4.88
+    }
+   ]
+  },
+  {
+   "id": "sushi",
+   "name": "Sushi",
+   "parts": {
+    "body": "orig/sushi/body.webp",
+    "nose": "orig/sushi/nose.webp",
+    "leaf": "orig/sushi/leaf.webp",
+    "arm_l": "orig/sushi/arm_l.webp",
+    "arm_r": "orig/sushi/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#1a0a05",
+     "#e85d2a",
+     "#ffb38a",
+     "#fff4ec"
+    ],
+    "art": "assets/orig/sushi/flames.webp"
+   },
+   "lid": "#845ea2",
+   "lidLine": "#090c07",
+   "eyes": [
+    {
+     "cx": 63.5,
+     "cy": 68.75,
+     "rx": 6.0,
+     "ry": 5.75
+    },
+    {
+     "cx": 78.0,
+     "cy": 68.5,
+     "rx": 6.0,
+     "ry": 5.5
+    }
+   ]
+  },
+  {
+   "id": "cardboard",
+   "name": "Cardboard",
+   "parts": {
+    "body": "orig/cardboard/body.webp",
+    "nose": "orig/cardboard/nose.webp",
+    "leaf": "orig/cardboard/leaf.webp",
+    "arm_l": "orig/cardboard/arm_l.webp",
+    "arm_r": "orig/cardboard/arm_r.webp"
+   },
+   "flames": {
+    "ramp": [
+     "#2a1a0a",
+     "#8a5a2b",
+     "#d4a86a",
+     "#fff1d6"
+    ],
+    "art": "assets/orig/cardboard/flames.webp"
+   },
+   "lid": "#c09759",
+   "lidLine": "#47496a",
+   "eyes": [
+    {
+     "cx": 63.88,
+     "cy": 67.06,
+     "rx": 7.38,
+     "ry": 7.56
+    },
+    {
+     "cx": 78.88,
+     "cy": 67.25,
+     "rx": 7.25,
+     "ry": 7.62
+    }
+   ]
   }
  ]
 }

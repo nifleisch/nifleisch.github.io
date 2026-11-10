@@ -9,7 +9,18 @@
 window.Flames = class Flames {
   constructor(canvas) {
     this.c = canvas;
+    this.cur = null; this.next = null; this.t0 = 0; this.dur = 1; this.queue = Promise.resolve(); this.specs = [];
+    this.sway = 0; this.intensity = 1; this.start = performance.now();
+    // iOS Safari drops WebGL contexts of pages left in the background: rebuild everything when it comes back
+    canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); this.lost = true; });
+    canvas.addEventListener('webglcontextrestored', () => { this.lost = false; this.init();
+      const s = this.specs[this.specs.length - 1]; this.cur = this.next = null; if (s) this.setStyle(s, 0); });
+    this.init();
+  }
+  init() {
+    const canvas = this.c;
     const gl = (this.gl = canvas.getContext('webgl', { premultipliedAlpha: false, alpha: true }));
+    if (!gl) throw new Error('WebGL unavailable');
     const vs = `attribute vec2 p; varying vec2 uv0; void main(){ uv0 = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }`;
     const fs = `precision mediump float;
       varying vec2 uv0;
@@ -88,11 +99,10 @@ window.Flames = class Flames {
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    this.u = n => gl.getUniformLocation(pr, n);
+    this.u = n => n in this.locs ? this.locs[n] : (this.locs[n] = gl.getUniformLocation(pr, n));   // looked up once, not every frame
     gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     this.white = this.tex(new Uint8Array([255, 255, 255, 255]), 1, 1);
-    this.cur = null; this.next = null; this.t0 = 0; this.dur = 1;
-    this.sway = 0; this.intensity = 1; this.start = performance.now();
+    this.locs = {};
   }
   tex(src, w, h) {
     const gl = this.gl, t = gl.createTexture();
@@ -126,16 +136,21 @@ window.Flames = class Flames {
     }
     return st;
   }
-  async setStyle(s, ms = 600) {
-    const st = await this.build(s);
-    if (!this.cur) { this.cur = st; return; }
-    if (this.next) this.cur = this.next;
-    this.next = st; this.t0 = performance.now(); this.dur = ms;
+  // styles are applied strictly in the order they were asked for: a slow image decode
+  // can no longer let an older style land after a newer one (flames not matching the creature)
+  setStyle(s, ms = 600) {
+    this.specs = [s];
+    const built = this.build(s);
+    return (this.queue = this.queue.then(() => built).then(st => {
+      if (!this.cur) { this.cur = st; return; }
+      if (this.next) this.cur = this.next;
+      this.next = st; this.t0 = performance.now(); this.dur = ms;
+    }).catch(() => {}));
   }
   update({ sway = 0, intensity = 1 } = {}) { this.sway = sway; this.intensity = intensity; }
   draw() {
     const gl = this.gl;
-    if (!this.cur) return;
+    if (!this.cur || this.lost) return;
     const q = Math.min(1.5, devicePixelRatio || 1), w = Math.round(this.c.clientWidth * q), h = Math.round(this.c.clientHeight * q);   // cap the shader's resolution
     if (this.c.width !== w || this.c.height !== h) { this.c.width = w; this.c.height = h; }
     gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);

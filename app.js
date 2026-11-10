@@ -1,8 +1,15 @@
 // 2.5D puppet rig. Layers come from assets/manifest.json (generated) and their
 // placement from assets/rig.json (hand-tunable: open the page with ?edit).
 (async () => {
-  const get = async u => (await fetch(u)).json();
-  const [M, R] = await Promise.all([get('assets/manifest.json'), get('assets/rig.json')]);
+  const get = async u => { const r = await fetch(u); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); };
+  let M, R;
+  try { [M, R] = await Promise.all([get('assets/manifest.json'), get('assets/rig.json')]); }
+  catch (e) {                                          // offline / blocked: show the still sticker instead of "loading…" forever
+    const l = document.getElementById('loading'); if (l) l.remove();
+    const im = new Image(); im.src = 'apple-touch-icon.png'; im.alt = '';
+    Object.assign(im.style, { position: 'absolute', inset: '15%', width: '70%', height: '70%', objectFit: 'contain' });
+    document.getElementById('figure').appendChild(im); throw e;
+  }
   const EDIT = new URLSearchParams(location.search).has('edit');
   const S = R.stage, PX = R.mode === 'frame' ? 1024 : 900;                       // stage units -> backing pixels
   const fig = document.getElementById('figure');
@@ -15,14 +22,24 @@
 
   // ---------- assets: first style, then the rest in the background
   const imgs = {};
-  const loadStyle = s => Promise.all(Object.entries(s.parts).map(([n, src]) => new Promise(ok => {
-    const i = new Image(); i.onload = () => ok([n, i]); i.onerror = () => ok([n, null]); i.src = 'assets/' + src;
-  }))).then(list => (imgs[s.id] = Object.assign(Object.fromEntries(list), { lid: s.lid, lidLine: s.lidLine, eyes: s.eyes })));
+  const loadImg = src => new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
+  // the flame art is fetched together with the layers, so a style only counts as ready once its flames are too
+  const loadStyle = s => Promise.all([...Object.entries(s.parts).map(([n, src]) => loadImg('assets/' + src).then(i => [n, i])),
+    ...(s.flames && s.flames.art ? [loadImg(s.flames.art).then(() => ['_flames', null])] : [])]).then(list => (imgs[s.id] = Object.assign(Object.fromEntries(list), { lid: s.lid, lidLine: s.lidLine, eyes: s.eyes })));
   await loadStyle(M.styles[0]);
   document.getElementById('loading').remove();
   M.styles.slice(1).forEach(loadStyle);
 
-  const flames = new Flames(document.getElementById('flames'));
+  // no WebGL (old devices, blocked GPU): the creature still works, just without shader flames
+  let flames;
+  try { flames = new Flames(document.getElementById('flames')); }
+  catch (e) {                                          // fallback: the painted flame image, standing still
+    console.warn('WebGL flames unavailable, using still flames:', e.message);
+    const c2 = document.getElementById('flames'), g2 = c2.getContext('2d'); let art = null;
+    flames = { setStyle(s) { const i = new Image(); i.onload = () => { art = i; }; i.src = s.art; }, update() {},
+      draw() { const w = c2.clientWidth, h = c2.clientHeight; if (c2.width !== w || c2.height !== h) { c2.width = w; c2.height = h; }
+        g2.clearRect(0, 0, w, h); const f = this.frame; if (art && f) g2.drawImage(art, f[0] * w, (1 - f[1] - f[3]) * h, f[2] * w, f[3] * h); } };
+  }
   flames.setStyle(M.styles[0].flames, 0);
   const fl = document.getElementById('flames');
   // the flame canvas covers the whole figure; the art box from rig.json is handed to the shader,
@@ -38,9 +55,12 @@
   const zoneEls = M.styles.map(s => { const d = document.createElement('div'); d.className = 'zone'; d.textContent = s.name; zonesEl.appendChild(d); return d; });
 
   // ---------- input
-  let mx = innerWidth / 2, my = innerHeight / 2, lastMove = performance.now(), clickUntil = 0, idleStyle = null, nextIdle = 0;
-  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; lastMove = performance.now(); document.body.classList.add('moved'); });
-  addEventListener('touchmove', e => { mx = e.touches[0].clientX; my = e.touches[0].clientY; lastMove = performance.now(); document.body.classList.add('moved'); }, { passive: true });
+  // `touched` stays false until a real pointer moves: until then the creature shows its original look
+  // instead of whatever style happens to sit under the (imaginary) cursor in the middle of the screen
+  let mx = innerWidth / 2, my = innerHeight / 2, lastMove = performance.now(), clickUntil = 0, idleStyle = null, nextIdle = 0, touched = false;
+  const moved = (x, y) => { mx = x; my = y; lastMove = performance.now(); touched = true; };
+  addEventListener('pointermove', e => moved(e.clientX, e.clientY));
+  addEventListener('touchmove', e => moved(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
   if (!EDIT) addEventListener('pointerdown', () => (clickUntil = performance.now() + 1300));
 
   // ---------- rig state
@@ -292,12 +312,12 @@
     const zi = Math.max(0, Math.min(cols - 1, Math.floor(mx / innerWidth * cols))) + cols * Math.max(0, Math.min(rows - 1, Math.floor(my / innerHeight * rows)));
     // nobody moving the cursor (or a phone): drift through random styles on its own
     let idle = null;
-    if (!FORCE_STYLE && now - lastMove > 6000) {
+    if (!FORCE_STYLE && !reduce && now - lastMove > 6000) {
       if (now > nextIdle || !idleStyle) { const pool = M.styles.filter(s => s.id !== style && imgs[s.id]); idleStyle = pool[Math.floor(Math.random() * pool.length)]; nextIdle = now + 3200; }
       idle = idleStyle;
     } else idleStyle = null;
     const hov = HOVER && M.styles.find(s => s.id === HOVER && imgs[s.id]);   // hovering a link previews a matching style
-    const want = (FORCE_STYLE && M.styles.find(s => s.id === FORCE_STYLE)) || hov || idle || M.styles[Math.min(zi, M.styles.length - 1)];
+    const want = (FORCE_STYLE && M.styles.find(s => s.id === FORCE_STYLE)) || hov || idle || (touched ? M.styles[Math.min(zi, M.styles.length - 1)] : M.styles[0]);
     zoneEls.forEach((z, i) => z.classList.toggle('active', M.styles[i] === want));
     if (!EDIT && !trans && want.id !== style && imgs[want.id]) { trans = { from: style, to: want.id, t0: now }; flames.setStyle(want.flames, DUR); dispatchEvent(new CustomEvent('styleglitch', { detail: { color: want.lid } })); }
 

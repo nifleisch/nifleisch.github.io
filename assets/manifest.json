@@ -37,81 +37,6 @@
    ]
   },
   {
-   "id": "clay",
-   "name": "Claymation",
-   "parts": {
-    "body": "orig/clay/body.webp",
-    "nose": "orig/clay/nose.webp",
-    "leaf": "orig/clay/leaf.webp",
-    "arm_l": "orig/clay/arm_l.webp",
-    "arm_r": "orig/clay/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#3a1050",
-     "#8a3fc9",
-     "#d59cff",
-     "#ffe9f6"
-    ],
-    "materialAmount": 0.8,
-    "steps": 6,
-    "art": "assets/orig/clay/flames.webp"
-   },
-   "lid": "#7f4d9f",
-   "lidLine": "#453f45",
-   "eyes": [
-    {
-     "cx": 64.69,
-     "cy": 63.31,
-     "rx": 6.69,
-     "ry": 5.81
-    },
-    {
-     "cx": 78.62,
-     "cy": 63.25,
-     "rx": 6.75,
-     "ry": 5.75
-    }
-   ]
-  },
-  {
-   "id": "felt",
-   "name": "Felted wool",
-   "parts": {
-    "body": "orig/felt/body.webp",
-    "nose": "orig/felt/nose.webp",
-    "leaf": "orig/felt/leaf.webp",
-    "arm_l": "orig/felt/arm_l.webp",
-    "arm_r": "orig/felt/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "materialAmount": 0.7,
-    "art": "assets/orig/felt/flames.webp"
-   },
-   "lid": "#4b2472",
-   "lidLine": "#222c19",
-   "eyes": [
-    {
-     "cx": 63.38,
-     "cy": 67.56,
-     "rx": 6.88,
-     "ry": 6.44
-    },
-    {
-     "cx": 78.12,
-     "cy": 67.25,
-     "rx": 6.75,
-     "ry": 6.0
-    }
-   ]
-  },
-  {
    "id": "watercolor",
    "name": "Watercolor",
    "parts": {
@@ -144,42 +69,6 @@
      "cy": 67.62,
      "rx": 6.94,
      "ry": 6.88
-    }
-   ]
-  },
-  {
-   "id": "crayon",
-   "name": "Crayon",
-   "parts": {
-    "body": "orig/crayon/body.webp",
-    "nose": "orig/crayon/nose.webp",
-    "leaf": "orig/crayon/leaf.webp",
-    "arm_l": "orig/crayon/arm_l.webp",
-    "arm_r": "orig/crayon/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/crayon/flames.webp"
-   },
-   "lid": "#8a48d7",
-   "lidLine": "#0c1512",
-   "eyes": [
-    {
-     "cx": 63.19,
-     "cy": 67.38,
-     "rx": 6.06,
-     "ry": 5.88
-    },
-    {
-     "cx": 77.81,
-     "cy": 67.31,
-     "rx": 6.06,
-     "ry": 5.69
     }
    ]
   },
@@ -288,42 +177,6 @@
      "cy": 67.44,
      "rx": 6.06,
      "ry": 5.81
-    }
-   ]
-  },
-  {
-   "id": "render3d",
-   "name": "3D render",
-   "parts": {
-    "body": "orig/render3d/body.webp",
-    "nose": "orig/render3d/nose.webp",
-    "leaf": "orig/render3d/leaf.webp",
-    "arm_l": "orig/render3d/arm_l.webp",
-    "arm_r": "orig/render3d/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/render3d/flames.webp"
-   },
-   "lid": "#a276bb",
-   "lidLine": "#726766",
-   "eyes": [
-    {
-     "cx": 64.19,
-     "cy": 63.62,
-     "rx": 7.19,
-     "ry": 5.25
-    },
-    {
-     "cx": 78.56,
-     "cy": 64.0,
-     "rx": 7.06,
-     "ry": 5.62
     }
    ]
   },
@@ -468,114 +321,6 @@
      "cy": 68.5,
      "rx": 6.0,
      "ry": 5.5
-    }
-   ]
-  },
-  {
-   "id": "balloon",
-   "name": "Balloon",
-   "parts": {
-    "body": "orig/balloon/body.webp",
-    "nose": "orig/balloon/nose.webp",
-    "leaf": "orig/balloon/leaf.webp",
-    "arm_l": "orig/balloon/arm_l.webp",
-    "arm_r": "orig/balloon/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/balloon/flames.webp"
-   },
-   "lid": "#9257bf",
-   "lidLine": "#030605",
-   "eyes": [
-    {
-     "cx": 63.06,
-     "cy": 66.94,
-     "rx": 6.31,
-     "ry": 5.44
-    },
-    {
-     "cx": 77.56,
-     "cy": 66.75,
-     "rx": 6.06,
-     "ry": 5.25
-    }
-   ]
-  },
-  {
-   "id": "plush",
-   "name": "Plush toy",
-   "parts": {
-    "body": "orig/plush/body.webp",
-    "nose": "orig/plush/nose.webp",
-    "leaf": "orig/plush/leaf.webp",
-    "arm_l": "orig/plush/arm_l.webp",
-    "arm_r": "orig/plush/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/plush/flames.webp"
-   },
-   "lid": "#552082",
-   "lidLine": "#513e5a",
-   "eyes": [
-    {
-     "cx": 64.81,
-     "cy": 67.56,
-     "rx": 8.69,
-     "ry": 6.06
-    },
-    {
-     "cx": 76.56,
-     "cy": 67.12,
-     "rx": 8.56,
-     "ry": 5.62
-    }
-   ]
-  },
-  {
-   "id": "candy",
-   "name": "Candy",
-   "parts": {
-    "body": "orig/candy/body.webp",
-    "nose": "orig/candy/nose.webp",
-    "leaf": "orig/candy/leaf.webp",
-    "arm_l": "orig/candy/arm_l.webp",
-    "arm_r": "orig/candy/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/candy/flames.webp"
-   },
-   "lid": "#6c2982",
-   "lidLine": "#634a59",
-   "eyes": [
-    {
-     "cx": 64.88,
-     "cy": 68.25,
-     "rx": 8.62,
-     "ry": 6.62
-    },
-    {
-     "cx": 76.56,
-     "cy": 68.19,
-     "rx": 8.56,
-     "ry": 6.44
     }
    ]
   },
@@ -864,42 +609,6 @@
      "cy": 63.5,
      "rx": 5.81,
      "ry": 4.88
-    }
-   ]
-  },
-  {
-   "id": "lowpoly",
-   "name": "Low poly",
-   "parts": {
-    "body": "orig/lowpoly/body.webp",
-    "nose": "orig/lowpoly/nose.webp",
-    "leaf": "orig/lowpoly/leaf.webp",
-    "arm_l": "orig/lowpoly/arm_l.webp",
-    "arm_r": "orig/lowpoly/arm_r.webp"
-   },
-   "flames": {
-    "ramp": [
-     "#2a0a4a",
-     "#7a3fd1",
-     "#c9a2ff",
-     "#f3e6ff"
-    ],
-    "art": "assets/orig/lowpoly/flames.webp"
-   },
-   "lid": "#8142b4",
-   "lidLine": "#615c68",
-   "eyes": [
-    {
-     "cx": 63.56,
-     "cy": 67.56,
-     "rx": 7.06,
-     "ry": 6.19
-    },
-    {
-     "cx": 78.0,
-     "cy": 67.31,
-     "rx": 7.0,
-     "ry": 5.94
     }
    ]
   },

@@ -52,6 +52,9 @@
   const cols = Math.ceil(Math.sqrt(M.styles.length)), rows = Math.ceil(M.styles.length / cols);
   zonesEl.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
   zonesEl.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  // the grid has more cells than styles; the spare cells get a repeat of some other style, so no corner is dead
+  const SPARE = ['lava', 'chrome', 'xray', 'gold', 'moss', 'blueprint'].map(id => M.styles.findIndex(s => s.id === id)).filter(i => i >= 0);
+  const ZONE = Array.from({ length: cols * rows }, (_, i) => i < M.styles.length ? i : SPARE[(i - M.styles.length) % SPARE.length]);
   const zoneEls = M.styles.map(s => { const d = document.createElement('div'); d.className = 'zone'; d.textContent = s.name; zonesEl.appendChild(d); return d; });
 
   // ---------- input
@@ -309,7 +312,8 @@
     if (FORCE_BLINK) { st.nextBlink = 1e9; st.blink = FORCE_BLINK; }
 
     // zone -> style
-    const zi = Math.max(0, Math.min(cols - 1, Math.floor(mx / innerWidth * cols))) + cols * Math.max(0, Math.min(rows - 1, Math.floor(my / innerHeight * rows)));
+    const cell = Math.max(0, Math.min(cols - 1, Math.floor(mx / innerWidth * cols))) + cols * Math.max(0, Math.min(rows - 1, Math.floor(my / innerHeight * rows)));
+    const zi = ZONE[cell];
     // nobody moving the cursor (or a phone): drift through random styles on its own
     let idle = null;
     if (!FORCE_STYLE && !reduce && now - lastMove > 6000) {
@@ -317,7 +321,7 @@
       idle = idleStyle;
     } else idleStyle = null;
     const hov = HOVER && M.styles.find(s => s.id === HOVER && imgs[s.id]);   // hovering a link previews a matching style
-    const want = (FORCE_STYLE && M.styles.find(s => s.id === FORCE_STYLE)) || hov || idle || (touched ? M.styles[Math.min(zi, M.styles.length - 1)] : M.styles[0]);
+    const want = (FORCE_STYLE && M.styles.find(s => s.id === FORCE_STYLE)) || hov || idle || (touched ? M.styles[zi] : M.styles[0]);
     zoneEls.forEach((z, i) => z.classList.toggle('active', M.styles[i] === want));
     if (!EDIT && !trans && want.id !== style && imgs[want.id]) { trans = { from: style, to: want.id, t0: now }; flames.setStyle(want.flames, DUR); dispatchEvent(new CustomEvent('styleglitch', { detail: { color: want.lid } })); }
 

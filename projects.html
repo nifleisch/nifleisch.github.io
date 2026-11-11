@@ -148,7 +148,7 @@
 // an RGB split, a pixel crunch, or a quick hop into another art style. Now and then one twitches on its own.
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const STYLES = ["balloon.webp", "base.webp", "bauhaus.webp", "bauhaus2.webp", "blueprint.webp", "bricks.webp", "cake.webp", "candy.webp", "cardboard.webp", "chrome.webp", "circuit.webp", "clay.webp", "comic.webp", "crayon.webp", "felt.webp", "glass.webp", "gold.webp", "graffiti.webp", "ice.webp", "knit.webp", "lava.webp", "lowpoly.webp", "manuscript.webp", "marble.webp", "mosaic.webp", "moss.webp", "neural.webp", "pixel.webp", "plush.webp", "porcelain.webp", "real.webp", "render3d.webp", "sketchnote.webp", "sushi.webp", "tattoo.webp", "watercolor.webp", "woodblock.webp", "xray.webp"];
+  const STYLES = ["base.webp", "bauhaus.webp", "bauhaus2.webp", "blueprint.webp", "bricks.webp", "cake.webp", "cardboard.webp", "chrome.webp", "circuit.webp", "comic.webp", "glass.webp", "gold.webp", "graffiti.webp", "ice.webp", "knit.webp", "lava.webp", "manuscript.webp", "marble.webp", "mosaic.webp", "moss.webp", "neural.webp", "pixel.webp", "porcelain.webp", "real.webp", "sketchnote.webp", "sushi.webp", "tattoo.webp", "watercolor.webp", "woodblock.webp", "xray.webp"];
   const R = (a, b) => a + Math.random() * (b - a), pick = a => a[Math.floor(Math.random() * a.length)];
   const rgb = (x) => `drop-shadow(${x}px 0 0 rgba(255,0,90,.75)) drop-shadow(${-x}px 0 0 rgba(0,190,255,.75))`;
   const fx = {
